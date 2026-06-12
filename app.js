@@ -4,7 +4,7 @@
 
 // --- Constants ---
 const GOOGLE_SHEET_ID = '1YLuRwlFbJeSItsdDL9hv1NcxxpqGkEvCrpshl465PEU';
-const GOOGLE_SHEET_CSV_URL = `/proxy/sheet`;
+const GOOGLE_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1YLuRwlFbJeSItsdDL9hv1NcxxpqGkEvCrpshl465PEU/gviz/tq?tqx=out:csv';
 const TOKEN_LIFETIME_MS = 60 * 60 * 1000; // 60 minutes in milliseconds
 
 // --- State ---
@@ -218,7 +218,7 @@ async function fetchToken() {
             client_secret: credentials.clientSecret
         });
 
-        const response = await fetch('/proxy/api/authorization/connect/token', {
+        const response = await fetch('proxy.php?path=authorization/connect/token', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -463,7 +463,7 @@ async function handleCreateCase(e) {
     btn.classList.add('loading');
 
     try {
-        const response = await fetch('/proxy/api/v1/case', {
+        const response = await fetch('proxy.php?path=v1/case', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
